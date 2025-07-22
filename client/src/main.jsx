@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Estudiantes from './pages/Estudiantes'; // ✅ usa el archivo correcto
+import Estudiantes from './pages/Estudiantes'; 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -1,4 +1,3 @@
-/* ==== RESET REAL Y GLOBAL ==== */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +17,7 @@ html, body {
 #root {
   margin-top: 0 !important;
 }
-/* Oculta la barra vertical visualmente si no se necesita */
+
 body::-webkit-scrollbar {
   width: 6px;
 }
@@ -28,7 +27,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 3px;
 }
 
-/* Evita doble scroll en navegadores específicos */
+
 #root {
   min-height: 100vh;
   overflow-x: hidden;
@@ -41,12 +40,12 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;   /* <- sin espacio extra arriba */
+  padding: 0;  
 }
 
 
 
-/* HEADER ocupa todo el ancho */
+
 .estudiantes-header {
   width: 100%;
   margin: 0;
@@ -54,8 +53,8 @@ body::-webkit-scrollbar-thumb {
   background-color: #ffffff;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;  /* ❌ NO sticky */
-  top: auto;           /* ✅ Por si acaso */
+  position: relative;  
+  top: auto;          
 }
 
 
@@ -68,7 +67,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/* FOOTER ocupa todo el ancho */
 .estudiantes-footer {
   margin-top: auto;
   background-color: #fff;
@@ -82,7 +80,6 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-/* CONTENIDO PRINCIPAL desplazado a la derecha */
 .estudiantes-container {
   width: 100%;
   max-width: 720px;
@@ -93,21 +90,21 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
-/* Imagen */
+
 .estudiantes-img {
   max-width: 160px;
   margin-bottom: 1rem;
   transform: translateX(0%);
 }
 
-/* Título */
+
 .titulo-principal {
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-/* Tarjeta del formulario */
+
 .estudiantes-form-card {
   width: 100%;
   background-color: rgb(0, 0, 0);
@@ -122,7 +119,7 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
 }
 
-/* Formulario */
+
 .form-grid {
   display: flex;
   flex-wrap: wrap;
@@ -141,7 +138,7 @@ body::-webkit-scrollbar-thumb {
   color: rgb(255, 255, 255);
 }
 
-/* Botón */
+
 .btn-agregar {
   width: 100%;
   padding: 0.75rem;
@@ -159,7 +156,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #0056b3;
 }
 
-/* Lista de estudiantes */
+
 .estudiantes-list {
   max-height: 300px;
   overflow-y: auto;
@@ -288,9 +285,9 @@ body::-webkit-scrollbar-thumb {
 
 
 .popup-result-list li button {
-  background: transparent;         /* Sin fondo negro */
-  border: none;                    /* Sin borde */
-  font-size: 1.2rem;               /* Tamaño grande y visible */
+  background: transparent;        
+  border: none;                    
+  font-size: 1.2rem;               
   margin-left: 0.5rem;
   cursor: pointer;
   transition: transform 0.2s ease;

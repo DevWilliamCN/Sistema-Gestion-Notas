@@ -5,7 +5,7 @@ require('./db/database');
 
 const app = express();
 
-// 🟢 Usar el puerto de Render si existe, o 3001 en local
+
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({

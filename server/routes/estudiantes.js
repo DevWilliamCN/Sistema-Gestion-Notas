@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/estudiantesController'); // Nombre corregido
+const controller = require('../controllers/estudiantesController'); 
 
 router.get('/', controller.obtenerEstudiantes);
 router.post('/', controller.agregarEstudiante);

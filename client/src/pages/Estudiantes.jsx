@@ -3,7 +3,6 @@ import axios from "axios";
 import ilustracion from "../assets/Graduation-rafiki.svg";
 import "./Estudiantes.css";
 
-// ✅ Detecta si estamos en Vercel o local
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001/api";
 
 const Estudiantes = () => {
