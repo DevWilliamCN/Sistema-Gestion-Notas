@@ -82,7 +82,7 @@ El frontend se ejecutará en `http://localhost:5173`
 ##  Despliegue sugerido
 
 - **Frontend**: [Vercel](https://vercel.com/)
-- **Backend**: [Railway](https://railway.app/) o [Render](https://render.com/)
+- **Backend**: [Render](https://render.com/)
 - **Base de datos local**: SQLite embebido (ideal para pruebas y proyectos educativos)
 
 ---
@@ -90,7 +90,7 @@ El frontend se ejecutará en `http://localhost:5173`
 ##  Créditos
 
 Desarrollado por **William Cubero**  
- Gmail: [w.cubero800@gmail.com]  
+ Gmail: w.cubero800@gmail.com  
 © 2025 - Proyecto personal
 
 ---
