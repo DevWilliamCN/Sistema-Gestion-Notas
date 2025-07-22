@@ -1,0 +1,326 @@
+/* ==== RESET REAL Y GLOBAL ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+
+#root {
+  margin-top: 0 !important;
+}
+/* Oculta la barra vertical visualmente si no se necesita */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* Evita doble scroll en navegadores específicos */
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+
+.estudiantes-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;   /* <- sin espacio extra arriba */
+}
+
+
+
+/* HEADER ocupa todo el ancho */
+.estudiantes-header {
+  width: 100%;
+  margin: 0;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;  /* ❌ NO sticky */
+  top: auto;           /* ✅ Por si acaso */
+}
+
+
+.estudiantes-header h1 {
+  margin: 0;
+  padding: 0;
+  color: #007bff;
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+
+/* FOOTER ocupa todo el ancho */
+.estudiantes-footer {
+  margin-top: auto;
+  background-color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #000000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  position: relative;
+}
+
+/* CONTENIDO PRINCIPAL desplazado a la derecha */
+.estudiantes-container {
+  width: 100%;
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Imagen */
+.estudiantes-img {
+  max-width: 160px;
+  margin-bottom: 1rem;
+  transform: translateX(0%);
+}
+
+/* Título */
+.titulo-principal {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Tarjeta del formulario */
+.estudiantes-form-card {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.estudiantes-form-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Formulario */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.form-grid input,
+.form-grid select {
+  flex: 1 1 calc(50% - 0.75rem);
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  border: 1px solid #fff9f9;
+  border-radius: 0.5rem;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+/* Botón */
+.btn-agregar {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #0056b3;
+}
+
+/* Lista de estudiantes */
+.estudiantes-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  padding: 0.9rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-grid {
+    flex-direction: column;
+  }
+
+  .form-grid input,
+  .form-grid select {
+    flex: 1 1 100%;
+  }
+
+  .btn-agregar {
+    font-size: 1rem;
+  }
+
+  .estudiantes-img {
+    transform: none;
+  }
+}
+
+
+
+.filtro-grupo {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.filtro-grupo select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .filtro-grupo {
+    position: static;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.popup input {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.popup-result-list {
+  list-style: none;
+  padding: 0;
+}
+
+.popup-result-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cerrar-popup {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+.popup-result-list li button {
+  background: transparent;         /* Sin fondo negro */
+  border: none;                    /* Sin borde */
+  font-size: 1.2rem;               /* Tamaño grande y visible */
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.popup-result-list li button:hover {
+  transform: scale(1.2);           /* Efecto hover moderno */
+}
+
+
+
+.popup-btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.popup-btn-group button {
+  background: #f0f0f0;
+  color: #000000;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.popup-btn-group button:hover {
+  background-color: #ddd;
+}
