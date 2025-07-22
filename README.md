@@ -1,28 +1,23 @@
-# 🎓 Sistema de Gestión de Estudiantes
+#  Sistema de Gestión de Estudiantes
 
 Este proyecto es una aplicación web completa para la gestión de estudiantes, desarrollada con **React + Vite** en el frontend y **Node.js + SQLite** en el backend. Permite agregar, editar, eliminar, filtrar y buscar estudiantes, con una interfaz moderna, responsiva y fácil de usar.
 
 ---
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
-- 🧑 Agregar nuevos estudiantes
-- 🔍 Buscar por nombre (popup editable)
-- ✏️ Modificar datos existentes
-- 🗑️ Eliminar estudiantes
-- 📊 Filtrar por grupo
-- 🌐 Totalmente responsivo
-- 🔒 Preparado para integrar login con roles (admin/lector)
-
----
-
-## 🖼️ Vista previa
-
-![Captura de pantalla](./capturas/captura1.png)
+-  Agregar nuevos estudiantes
+-  Buscar por nombre (popup editable)
+-  Modificar datos existentes
+-  Eliminar estudiantes
+-  Filtrar por grupo
+-  Totalmente responsivo
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+
+
+##  Tecnologías utilizadas
 
 ### Frontend
 - [React](https://reactjs.org/)
@@ -36,7 +31,7 @@ Este proyecto es una aplicación web completa para la gestión de estudiantes, d
 
 ---
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 /proyecto/
@@ -51,7 +46,7 @@ Este proyecto es una aplicación web completa para la gestión de estudiantes, d
 
 ---
 
-## 🧪 Cómo ejecutar el proyecto
+##  Cómo ejecutar el proyecto
 
 ### 1. Clona el repositorio
 
@@ -62,7 +57,7 @@ cd gestion-estudiantes
 
 ### 2. Instala dependencias
 
-#### 📦 Backend
+####  Backend
 
 ```bash
 cd server
@@ -72,7 +67,7 @@ node index.js
 
 El backend se ejecutará en `http://localhost:3001`
 
-#### 🧱 Frontend
+#### Frontend
 
 ```bash
 cd frontend
@@ -84,7 +79,7 @@ El frontend se ejecutará en `http://localhost:5173`
 
 ---
 
-## 🌍 Despliegue sugerido
+##  Despliegue sugerido
 
 - **Frontend**: [Vercel](https://vercel.com/)
 - **Backend**: [Railway](https://railway.app/) o [Render](https://render.com/)
@@ -92,10 +87,10 @@ El frontend se ejecutará en `http://localhost:5173`
 
 ---
 
-## ✨ Créditos
+##  Créditos
 
 Desarrollado por **William Cubero**  
-📧 Contacto: [w.cubero800@gmail.com]  
-© 2025 - Proyecto académico
+ Gmail: [w.cubero800@gmail.com]  
+© 2025 - Proyecto personal
 
 ---
