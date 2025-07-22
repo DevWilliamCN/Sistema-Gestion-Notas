@@ -3,6 +3,9 @@ import axios from "axios";
 import ilustracion from "../assets/Graduation-rafiki.svg";
 import "./Estudiantes.css";
 
+// ✅ Detecta si estamos en Vercel o local
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001/api";
+
 const Estudiantes = () => {
   const [estudiantes, setEstudiantes] = useState([]);
   const [form, setForm] = useState({
@@ -13,39 +16,36 @@ const Estudiantes = () => {
   });
   const [editingId, setEditingId] = useState(null);
   const [filtroGrupo, setFiltroGrupo] = useState("Todos");
+  const [popupAbierto, setPopupAbierto] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
 
   const fetchEstudiantes = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/api/estudiantes");
+      const res = await axios.get(`${API_BASE_URL}/estudiantes`);
       setEstudiantes(res.data);
     } catch (err) {
       console.error("Error al obtener estudiantes:", err);
     }
   };
 
-
-  
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    if (form.id) {
-      // ACTUALIZAR estudiante existente
-      await axios.put(`http://localhost:3001/api/estudiantes/${form.id}`, form);
-    } else {
-      // AGREGAR nuevo estudiante
-      await axios.post("http://localhost:3001/api/estudiantes", form);
+    e.preventDefault();
+    try {
+      if (form.id) {
+        await axios.put(`${API_BASE_URL}/estudiantes/${form.id}`, form);
+      } else {
+        await axios.post(`${API_BASE_URL}/estudiantes`, form);
+      }
+      setForm({ nombre: "", correo: "", grupo: "", sexo: "" });
+      fetchEstudiantes();
+    } catch (err) {
+      console.error("Error al guardar estudiante:", err);
     }
-
-    setForm({ nombre: "", correo: "", grupo: "", sexo: "" }); // limpiar
-    fetchEstudiantes(); // recargar lista
-  } catch (err) {
-    console.error("Error al guardar estudiante:", err);
-  }
-};
+  };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/estudiantes/${id}`);
+      await axios.delete(`${API_BASE_URL}/estudiantes/${id}`);
       fetchEstudiantes();
     } catch (err) {
       console.error("Error al eliminar estudiante:", err);
@@ -57,20 +57,18 @@ const Estudiantes = () => {
       ? estudiantes
       : estudiantes.filter((e) => e.grupo === filtroGrupo);
 
-  useEffect(() => {
-    fetchEstudiantes();
-  }, []);
-
-  const [popupAbierto, setPopupAbierto] = useState(false);
-  const [busqueda, setBusqueda] = useState("");
   const estudiantesBuscados = estudiantes.filter((e) =>
     e.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
+  useEffect(() => {
+    fetchEstudiantes();
+  }, []);
+
   return (
     <div className="estudiantes-wrapper">
       <header className="estudiantes-header">
-        <h1>Sistema de Gestión </h1>
+        <h1>Sistema de Gestión</h1>
         <div className="filtro-grupo">
           <label htmlFor="grupo">Filtrar por grupo: </label>
           <select
@@ -92,9 +90,7 @@ const Estudiantes = () => {
       <main className="estudiantes-container">
         <div className="text-center">
           <img src={ilustracion} alt="Graduación" className="estudiantes-img" />
-          <h2 className="titulo-principal">
-            Sistema de Gestión de Estudiantes
-          </h2>
+          <h2 className="titulo-principal">Sistema de Gestión de Estudiantes</h2>
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", margin: "1rem 0" }}>
@@ -129,17 +125,21 @@ const Estudiantes = () => {
                   <li key={e.id}>
                     {e.nombre}
                     <div className="popup-btn-group">
-                      <button onClick={() => {
-                        setForm(e);
-                        setEditingId(e.id);
-                        setPopupAbierto(false);
-                      }}>
+                      <button
+                        onClick={() => {
+                          setForm(e);
+                          setEditingId(e.id);
+                          setPopupAbierto(false);
+                        }}
+                      >
                         ✏️ Modificar
                       </button>
-                      <button onClick={() => {
-                        handleDelete(e.id);
-                        setPopupAbierto(false);
-                      }}>
+                      <button
+                        onClick={() => {
+                          handleDelete(e.id);
+                          setPopupAbierto(false);
+                        }}
+                      >
                         🗑️ Eliminar
                       </button>
                     </div>
@@ -194,18 +194,10 @@ const Estudiantes = () => {
         <ul className="estudiantes-list">
           {estudiantesFiltrados.map((e) => (
             <li key={e.id} className="list-group-item">
-              <span>
-                <strong>🧑 Nombre:</strong> {e.nombre} 
-              </span>
-              <span>
-                <strong>📧 Correo:</strong> {e.correo || "Sin correo"} 
-              </span>
-              <span>
-                <strong>🏫 Grupo:</strong> {e.grupo || "N/A"} 
-              </span>
-              <span>
-                <strong>🚻 Sexo:</strong> {e.sexo || "N/A"}
-              </span>
+              <span><strong>🧑 Nombre:</strong> {e.nombre}</span>
+              <span><strong>📧 Correo:</strong> {e.correo || "Sin correo"}</span>
+              <span><strong>🏫 Grupo:</strong> {e.grupo || "N/A"}</span>
+              <span><strong>🚻 Sexo:</strong> {e.sexo || "N/A"}</span>
             </li>
           ))}
         </ul>
